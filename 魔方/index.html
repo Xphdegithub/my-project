@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            perspective: 2000px;
+            transform-style: preserve-3d;
+        }
+        .wrapper {
+            width: 400px;
+            height: 400px;
+            transform-style: preserve-3d;   
+            background: cyan;
+            animation: rotateRun 4s linear infinite;
+        }
+        .wrapper img {
+            width: 400px;
+            height: 400px;
+
+            position: absolute;
+        }
+        .wrapper img:nth-of-type(1) {
+            transform: translateZ(200px);
+        }
+        .wrapper img:nth-of-type(2) {
+            transform: translateZ(-200px);
+        }
+        .wrapper img:nth-of-type(3) {
+            transform: translateX(-200px) rotateY(90deg);
+        }
+        .wrapper img:nth-of-type(4) {
+            transform: translateX(200px) rotateY(90deg);
+        }
+        .wrapper img:nth-of-type(5) {
+            transform: translateY(-200px) rotateX(90deg);
+        }
+        .wrapper img:nth-of-type(6) {
+            transform: translateY(200px) rotateX(90deg);
+        }
+        @keyframes rotateRun {
+            form {
+                transform: rotateY(0deg) rotateX(0deg);
+            }
+            to {
+                transform: rotateY(360deg) rotateX(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <img src="./img/1.jpg">
+        <img src="./img/2.jpg">
+        <img src="./img/3.jpg">
+        <img src="./img/4.jpg">
+        <img src="./img/5.png">
+        <img src="./img/6.jpg">
+    </div>
+
+
+    <script>
+        document.body.onmousemove = function (e) {
+            this.style.perspectiveOrigin = '' + e.pageX + 'px ' + e.pageY + 'px';
+        }
+    </script>
+</body>
+</html>
